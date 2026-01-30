@@ -1,0 +1,363 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Prestations carrosserie';
+const description =
+  'Carrosserie, peinture, vitrage, débosselage et restauration. Des prestations complètes à Carcans, avec finitions premium.';
+
+const services = [
+  {
+    id: 'carrosserie',
+    title: 'Carrosserie & Réparation',
+    subtitle: 'Expertise technique et précision artisanale',
+    description: 'Redressement, remplacement et restructuration après sinistre. Chaque intervention respecte les lignes d\'origine avec un soin du détail absolu.',
+    features: [
+      'Débosselage et redressement de tôle',
+      'Remplacement d\'éléments de carrosserie',
+      'Restructuration après choc',
+      'Finitions et ajustements précis',
+    ],
+  },
+  {
+    id: 'peinture',
+    title: 'Peinture Automobile',
+    subtitle: 'Finitions premium et rendu impeccable',
+    description: 'Peinture complète, retouches et raccords invisibles. Cabine professionnelle pour un résultat durable et uniforme.',
+    features: [
+      'Peinture complète véhicule',
+      'Retouches et raccords invisibles',
+      'Préparation minutieuse des surfaces',
+      'Peinture vintage sur-mesure',
+    ],
+  },
+  {
+    id: 'vitrage',
+    title: 'Vitrage',
+    subtitle: 'Sécurité et étanchéité garanties',
+    description: 'Remplacement de pare-brise et vitres latérales avec priorité à la sécurité et aux normes en vigueur.',
+    features: [
+      'Remplacement pare-brise',
+      'Réparation impact et fissure',
+      'Vitres latérales et lunette arrière',
+      'Contrôle étanchéité et calibrage',
+    ],
+  },
+  {
+    id: 'mecanique',
+    title: 'Mécanique & Pneumatique',
+    subtitle: 'Contrôles complémentaires post-sinistre',
+    description: 'Vérifications essentielles après réparation : géométrie, parallélisme et check-up sécurité.',
+    features: [
+      'Diagnostic post-sinistre',
+      'Géométrie et parallélisme',
+      'Contrôle suspension et trains roulants',
+      'Check-up sécurité avant restitution',
+    ],
+  },
+];
+
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="section prestations-hero">
+    <div class="container">
+      <div class="hero-content-center">
+        <span class="tag premium-tag">Savoir-faire artisanal</span>
+        <h1 class="section-title">Excellence en carrosserie et peinture</h1>
+        <p class="hero-lead">
+          Des prestations complètes pour redonner vie à votre véhicule.
+          Précision technique, finitions premium et transparence totale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Détaillés -->
+  <section class="section services-detailed-section">
+    <div class="container">
+      {services.map((service, index) => (
+        <article class="service-detailed" data-index={index}>
+          <div class="service-header">
+            <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
+            <div class="service-header-text">
+              <h2>{service.title}</h2>
+              <p class="service-subtitle">{service.subtitle}</p>
+            </div>
+          </div>
+          <div class="service-content-grid">
+            <div class="service-description">
+              <p>{service.description}</p>
+            </div>
+            <div class="service-features">
+              <ul class="features-list">
+                {service.features.map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Accompagnement Section -->
+  <section class="section accompagnement-section">
+    <div class="container">
+      <div class="accompagnement-card surface premium-card">
+        <div class="accompagnement-content">
+          <div>
+            <p class="section-kicker">Accompagnement complet</p>
+            <h2 class="section-title">Plus qu'une réparation</h2>
+            <p class="accompagnement-text">
+              Nous vous accompagnons dans toutes vos démarches : gestion assurance,
+              véhicule de courtoisie selon disponibilité, et suivi transparent jusqu'à la restitution.
+            </p>
+          </div>
+          <div class="accompagnement-actions">
+            <a href="/contact" class="btn">Demander un devis</a>
+            <a href="/assurance" class="btn btn--ghost">En savoir plus sur l'assurance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Variables couleur or */
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  /* Hero Section */
+  .prestations-hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+    text-align: center;
+  }
+
+  .hero-content-center {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    display: inline-flex;
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+
+  /* Services Détaillés */
+  .services-detailed-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+  }
+
+  .service-detailed {
+    margin-bottom: 48px;
+    padding: 40px;
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .service-detailed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border-radius: var(--radius) var(--radius) 0 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .service-detailed:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-detailed:hover {
+    border-color: var(--accent);
+    box-shadow: 0 16px 48px rgba(15, 118, 110, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .service-header {
+    display: flex;
+    align-items: start;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .service-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    font-family: var(--font-serif);
+    opacity: 0.3;
+    min-width: 80px;
+  }
+
+  .service-header-text h2 {
+    color: var(--accent-strong);
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+    font-family: var(--font-serif);
+  }
+
+  .service-subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .service-content-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr;
+  }
+
+  .service-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .features-list li {
+    padding-left: 32px;
+    position: relative;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .features-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  /* Section Accompagnement */
+  .accompagnement-section {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+  }
+
+  .accompagnement-card {
+    padding: 48px 32px;
+  }
+
+  .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    border: 2px solid var(--accent);
+    position: relative;
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+  }
+
+  .accompagnement-content {
+    display: grid;
+    gap: 32px;
+  }
+
+  .accompagnement-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+
+  .accompagnement-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Responsive - Tablette */
+  @media (min-width: 768px) {
+    .service-content-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+    }
+
+    .accompagnement-content {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .accompagnement-actions {
+      flex-direction: column;
+    }
+  }
+
+  /* Responsive - Desktop */
+  @media (min-width: 1024px) {
+    .atelier-gallery {
+      gap: 40px;
+    }
+
+    .service-detailed {
+      padding: 48px 56px;
+    }
+
+    .accompagnement-card {
+      padding: 56px 64px;
+    }
+
+    .gallery-item img {
+      max-height: 280px;
+    }
+    .photo-strip-frame {
+      width: 260px;
+      height: 170px;
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.05) 100%);
+  }
+
+  :root[data-theme="dark"] .service-number {
+    opacity: 0.2;
+  }
+</style>

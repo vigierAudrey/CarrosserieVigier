@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Mentions légales';
+const description = 'Informations légales de la Carrosserie Carcanaise.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Mentions légales</h1>
+      <div class="card">
+        <h2>Éditeur du site</h2>
+        <p>{site.name}</p>
+        <p>{site.address.streetAddress}</p>
+        <p>{site.address.postalCode} {site.address.addressLocality}, France</p>
+        <p>Email : {site.email}</p>
+        <p>Téléphone : {site.phone}</p>
+        <p>SIRET : à compléter</p>
+      </div>
+
+      <div class="card">
+        <h2>Hébergement</h2>
+        <p>Hébergeur : à compléter</p>
+        <p>Adresse : à compléter</p>
+        <p>Téléphone : à compléter</p>
+      </div>
+
+      <div class="card">
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          L’ensemble du contenu du site (textes, images, graphismes) est la propriété de
+          {site.name}, sauf mention contraire. Toute reproduction sans autorisation préalable est
+          interdite.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+import { site } from '../data/site';
+
+const { compact = false } = Astro.props;
+---
+<div class={`cta-group${compact ? ' cta-group--compact' : ''}`}>
+  <a class="btn" href={site.telHref} aria-label={`Appeler ${site.name}`}>Appeler</a>
+  <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener" aria-label="Ouvrir l’itinéraire Google Maps">
+    Itinéraire
+  </a>
+</div>

@@ -1,0 +1,336 @@
+---
+import { navLinks, site } from '../data/site';
+import CTAButtons from './CTAButtons.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={site.name}>
+      <span class="brand-name">{site.name}</span>
+      <span class="brand-tagline">Excellence en carrosserie</span>
+    </a>
+    <nav class="site-nav desktop-nav" aria-label="Navigation principale">
+      {navLinks.map((link) => (
+        <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <ThemeToggle />
+      <CTAButtons compact={true} />
+      <details class="mobile-nav">
+        <summary class="mobile-nav-toggle" aria-label="Ouvrir le menu">
+          <span class="mobile-nav-label">Menu</span>
+          <span class="mobile-nav-icon" aria-hidden="true"></span>
+        </summary>
+        <nav class="mobile-nav-panel" aria-label="Navigation principale">
+          {navLinks.map((link) => (
+            <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<style>
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    backdrop-filter: blur(16px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    order: 1;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: transform 0.2s ease;
+  }
+
+  .brand:hover {
+    transform: translateY(-1px);
+  }
+
+  .brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-strong) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+
+  .brand-tagline {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .site-nav {
+    display: flex;
+    gap: 24px;
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+    width: 100%;
+    order: 3;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .site-nav a {
+    padding: 8px 0;
+    position: relative;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .site-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    color: var(--accent-strong);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    order: 2;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .mobile-nav {
+    flex: 0 0 auto;
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .mobile-nav-toggle {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mobile-nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-nav-toggle::marker {
+    content: '';
+  }
+
+  .mobile-nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+  }
+
+  .mobile-nav-icon {
+    position: relative;
+    width: 20px;
+    height: 14px;
+    display: inline-block;
+  }
+
+  .mobile-nav-icon::before,
+  .mobile-nav-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 999px;
+    transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mobile-nav-icon::before {
+    top: 2px;
+  }
+
+  .mobile-nav-icon::after {
+    top: 10px;
+  }
+
+  .mobile-nav[open] .mobile-nav-toggle {
+    border-color: color-mix(in srgb, var(--gold), var(--border));
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.12);
+  }
+
+  .mobile-nav[open] .mobile-nav-icon::before {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+
+  .mobile-nav[open] .mobile-nav-icon::after {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  .mobile-nav-panel {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    box-shadow: 0 16px 40px rgba(15, 118, 110, 0.08);
+    width: min(100vw - 32px, 320px);
+    margin-left: auto;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    z-index: 5;
+  }
+
+  .mobile-nav-panel a {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid transparent;
+    font-weight: 500;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-nav-panel a:hover,
+  .mobile-nav-panel a[aria-current="page"] {
+    color: var(--accent-strong);
+    border-color: color-mix(in srgb, var(--gold), var(--border));
+  }
+
+  .mobile-nav-panel a:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 768px) {
+    .site-nav {
+      width: auto;
+      order: 2;
+    }
+
+    .desktop-nav {
+      display: flex;
+    }
+
+    .header-actions {
+      order: 3;
+      flex-wrap: nowrap;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .header-actions {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+
+    .header-actions .cta-group {
+      gap: 6px;
+    }
+
+    .header-actions .btn {
+      padding: 8px 10px;
+      font-size: 0.82rem;
+    }
+
+    .header-actions .theme-toggle {
+      padding: 6px 8px;
+      font-size: 0.78rem;
+      gap: 0;
+    }
+
+    .header-actions .theme-toggle [data-theme-label] {
+      display: none;
+    }
+
+    .mobile-nav-toggle {
+      padding: 6px 10px;
+    }
+
+    .mobile-nav-label {
+      display: none;
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .site-header {
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  :root[data-theme="dark"] .brand-name {
+    background: linear-gradient(135deg, var(--text) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

@@ -1,0 +1,450 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButtons from '../components/CTAButtons.astro';
+
+const title = 'Assurance & démarches';
+const description =
+  "Un accompagnement clair pour vos démarches d'assurance : expertise, devis, suivi et restitution en toute transparence.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="section assurance-hero">
+    <div class="container">
+      <div class="hero-content-center">
+        <span class="tag premium-tag">Accompagnement complet</span>
+        <h1 class="section-title">Assurance : gérons vos démarches</h1>
+        <p class="hero-lead">
+          De l'expertise à la restitution, nous simplifions chaque étape.
+          Transparence totale et qualité garantie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Assurance -->
+  <section class="section process-assurance-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Notre accompagnement</p>
+        <h2 class="section-title">Un processus maîtrisé de bout en bout</h2>
+      </div>
+
+      <div class="process-assurance-grid">
+        <article class="process-assurance-card surface premium-card">
+          <div class="process-number">01</div>
+          <h3>Avant l'expertise</h3>
+          <p class="process-intro">
+            Diagnostic précis pour faciliter l'expertise et garantir une prise en charge optimale.
+          </p>
+          <ul class="process-list">
+            <li>Analyse complète des dommages</li>
+            <li>Devis détaillé et transparent</li>
+            <li>Conseils sur la prise en charge</li>
+            <li>Coordination avec votre assureur</li>
+          </ul>
+        </article>
+
+        <article class="process-assurance-card surface premium-card">
+          <div class="process-number">02</div>
+          <h3>Pendant les travaux</h3>
+          <p class="process-intro">
+            Suivi transparent et communication régulière pour vous tenir informé à chaque étape.
+          </p>
+          <ul class="process-list">
+            <li>Planification détaillée des interventions</li>
+            <li>Utilisation des pièces validées</li>
+            <li>Points réguliers sur l'avancement</li>
+            <li>Ajustements si nécessaire</li>
+          </ul>
+        </article>
+
+        <article class="process-assurance-card surface premium-card">
+          <div class="process-number">03</div>
+          <h3>Après la restitution</h3>
+          <p class="process-intro">
+            Contrôle qualité final et présentation des travaux réalisés avec explications détaillées.
+          </p>
+          <ul class="process-list">
+            <li>Contrôle qualité complet</li>
+            <li>Nettoyage soigné du véhicule</li>
+            <li>Présentation des travaux effectués</li>
+            <li>Conseils d'entretien</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garanties Section -->
+  <section class="section guarantees-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Vos garanties</p>
+        <h2 class="section-title">Transparence et confiance</h2>
+      </div>
+
+      <div class="guarantees-grid">
+        <article class="card guarantee-card">
+          <div class="guarantee-icon">✓</div>
+          <h3>Devis transparent</h3>
+          <p>Chaque poste est détaillé et expliqué avant validation. Aucune surprise.</p>
+        </article>
+
+        <article class="card guarantee-card">
+          <div class="guarantee-icon">✓</div>
+          <h3>Libre choix du réparateur</h3>
+          <p>Vous décidez librement de votre atelier. C'est votre droit.</p>
+        </article>
+
+        <article class="card guarantee-card">
+          <div class="guarantee-icon">✓</div>
+          <h3>Qualité garantie</h3>
+          <p>Réparation conforme aux standards et contrôle qualité systématique.</p>
+        </article>
+
+        <article class="card guarantee-card">
+          <div class="guarantee-icon">✓</div>
+          <h3>Suivi personnalisé</h3>
+          <p>Communication humaine et disponibilité pour répondre à vos questions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Assurance -->
+  <section class="section faq-assurance-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Questions fréquentes</p>
+        <h2 class="section-title">Vos réponses sur l'assurance</h2>
+      </div>
+
+      <div class="faq-assurance-grid">
+        <article class="card faq-card">
+          <h3>Travaillez-vous avec toutes les assurances ?</h3>
+          <p>Oui, nous travaillons avec l'ensemble des assureurs et gérons les démarches pour simplifier votre prise en charge.</p>
+        </article>
+
+        <article class="card faq-card">
+          <h3>Puis-je venir chez vous même si mon assurance a un réseau ?</h3>
+          <p>Absolument. Vous êtes libre de choisir votre réparateur. Nous vous accompagnons dans cette démarche.</p>
+        </article>
+
+        <article class="card faq-card">
+          <h3>Quels documents dois-je apporter ?</h3>
+          <p>Constat amiable, déclaration de sinistre et coordonnées de votre assureur. Nous vous guidons pour le reste.</p>
+        </article>
+
+        <article class="card faq-card">
+          <h3>Comment se passe le règlement avec l'assurance ?</h3>
+          <p>Nous établissons le devis validé par l'expert. Le règlement se fait directement avec votre assureur selon votre contrat.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="section cta-assurance-section">
+    <div class="container">
+      <div class="cta-card surface premium-card">
+        <div class="cta-content">
+          <h2>Un sinistre ? Contactez-nous rapidement</h2>
+          <p>Nous vous conseillons et démarrons les démarches ensemble.</p>
+          <CTAButtons />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Variables couleur or */
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  /* Hero Section */
+  .assurance-hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+    text-align: center;
+  }
+
+  .hero-content-center {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    display: inline-flex;
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+
+  .hero-cta {
+    margin-top: 32px;
+  }
+
+  /* Section headers */
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  /* Process Assurance */
+  .process-assurance-section {
+    background: var(--bg-elev);
+  }
+
+  .process-assurance-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+
+  .process-assurance-card {
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    border: 2px solid var(--accent);
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+  }
+
+  .process-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    font-family: var(--font-serif);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .process-assurance-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .process-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .process-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .process-list li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .process-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 16px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  /* Guarantees Section */
+  .guarantees-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+  }
+
+  .guarantees-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .guarantee-card {
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .guarantee-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .guarantee-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .guarantee-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(15, 118, 110, 0.12);
+  }
+
+  .guarantee-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--gold);
+    background: var(--accent-soft);
+    border-radius: 50%;
+  }
+
+  .guarantee-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .guarantee-card p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* FAQ Assurance */
+  .faq-assurance-section {
+    background: var(--bg-elev);
+  }
+
+  .faq-assurance-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .faq-card {
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .faq-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.1);
+  }
+
+  .faq-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .faq-card p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CTA Final */
+  .cta-assurance-section {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+  }
+
+  .cta-card {
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: var(--accent-strong);
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* Responsive - Tablette */
+  @media (min-width: 768px) {
+    .process-assurance-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .guarantees-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .faq-assurance-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  /* Responsive - Desktop */
+  @media (min-width: 1024px) {
+    .guarantees-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .process-assurance-card {
+      padding: 40px 32px;
+    }
+
+    .cta-card {
+      padding: 56px 48px;
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.05) 100%);
+  }
+
+  :root[data-theme="dark"] .guarantee-icon {
+    background: rgba(212, 175, 55, 0.15);
+  }
+</style>

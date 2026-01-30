@@ -1,0 +1,35 @@
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  aria-pressed="false"
+  aria-label="Basculer le thème"
+>
+  <span aria-hidden="true">☾</span>
+  <span data-theme-label>Mode sombre</span>
+</button>
+
+<script is:inline>
+  const button = document.querySelector('[data-theme-toggle]');
+  if (button) {
+    const label = button.querySelector('[data-theme-label]');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = document.documentElement.dataset.theme || (prefersDark ? 'dark' : 'light');
+
+    const apply = (theme) => {
+      document.documentElement.dataset.theme = theme;
+      button.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      if (label) {
+        label.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
+      }
+    };
+
+    apply(current);
+
+    button.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      apply(next);
+    });
+  }
+</script>

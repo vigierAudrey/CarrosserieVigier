@@ -1,0 +1,22 @@
+---
+const {
+  srcBase,
+  alt,
+  width,
+  height,
+  sizes = '(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw',
+  loading = 'lazy',
+  decoding = 'async',
+} = Astro.props;
+
+const avifSrc = `${srcBase}-800.avif 800w, ${srcBase}-1400.avif 1400w`;
+const webpSrc = `${srcBase}-800.webp 800w, ${srcBase}-1400.webp 1400w`;
+const jpgSrc = `${srcBase}-800.jpg 800w, ${srcBase}-1400.jpg 1400w`;
+const fallback = `${srcBase}-800.jpg`;
+---
+<picture>
+  <source type="image/avif" srcset={avifSrc} sizes={sizes} />
+  <source type="image/webp" srcset={webpSrc} sizes={sizes} />
+  <source type="image/jpeg" srcset={jpgSrc} sizes={sizes} />
+  <img src={fallback} alt={alt} {...(width && height ? { width, height } : {})} loading={loading} decoding={decoding} />
+</picture>

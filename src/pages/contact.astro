@@ -1,0 +1,395 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButtons from '../components/CTAButtons.astro';
+import { site } from '../data/site';
+
+const title = 'Contact';
+const description =
+  'Contactez la Carrosserie Carcanaise : téléphone, email, itinéraire et formulaire de contact.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="section contact-hero">
+    <div class="container">
+      <div class="hero-content-center">
+        <span class="tag premium-tag">Parlons de votre projet</span>
+        <h1 class="section-title">Contactez-nous</h1>
+        <p class="hero-lead">
+          Devis gratuit, conseil personnalisé et réponse rapide.
+          Votre satisfaction commence par un échange transparent.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info & Map Grid -->
+  <section class="section contact-main-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Informations de Contact -->
+        <div class="contact-info-card surface premium-card">
+          <div class="contact-info-header">
+            <h2>Carrosserie Carcanaise</h2>
+            <p class="section-kicker">À votre service à Carcans</p>
+          </div>
+
+          <div class="contact-details-grid">
+            <div class="contact-detail-item">
+              <div class="detail-icon">📍</div>
+              <div class="detail-content">
+                <h3>Adresse</h3>
+                <p>{site.address.streetAddress}<br/>{site.address.postalCode} {site.address.addressLocality}</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon">📞</div>
+              <div class="detail-content">
+                <h3>Téléphone</h3>
+                <p>
+                  <a class="contact-phone" href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a><br/>
+                  <a class="contact-phone" href={`tel:${site.mobile.replace(/\s/g, '')}`}>{site.mobile}</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon">✉️</div>
+              <div class="detail-content">
+                <h3>Email</h3>
+                <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon">🕐</div>
+              <div class="detail-content">
+                <h3>Horaires</h3>
+                <p>{site.openingHours.label}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-cta-section">
+            <CTAButtons />
+          </div>
+        </div>
+
+        <!-- Carte -->
+        <div class="map-container">
+          <div class="map-card">
+            <h3>Nous trouver</h3>
+            <div class="map-wrapper">
+              <iframe
+                title="Carte de Carrosserie Carcanaise"
+                src="https://www.google.com/maps?q=68%20route%20de%20Bordeaux%2C%2033121%20Carcans%2C%20France&output=embed"
+                width="100%"
+                height="100%"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Pourquoi nous contacter -->
+  <section class="section why-contact-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Nos engagements</p>
+        <h2 class="section-title">Pourquoi nous faire confiance ?</h2>
+      </div>
+      <div class="why-contact-grid">
+        <article class="card why-card">
+          <h3>Réponse rapide</h3>
+          <p>Nous vous répondons sous 24h pour échanger sur votre besoin et planifier une intervention.</p>
+        </article>
+        <article class="card why-card">
+          <h3>Devis transparent</h3>
+          <p>Diagnostic précis et devis détaillé sans surprise, avec explications claires.</p>
+        </article>
+        <article class="card why-card">
+          <h3>Accompagnement assurance</h3>
+          <p>Nous gérons vos démarches et simplifions le processus de prise en charge.</p>
+        </article>
+        <article class="card why-card">
+          <h3>Proximité locale</h3>
+          <p>Un atelier familial à Carcans, disponible et à l'écoute de vos besoins.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Variables couleur or */
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  /* Hero Section */
+  .contact-hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+    text-align: center;
+    padding-bottom: 48px;
+  }
+
+  .hero-content-center {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    display: inline-flex;
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+
+  /* Contact Grid */
+  .contact-main-section {
+    background: var(--bg);
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    padding: 40px 32px;
+  }
+
+  .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    border: 2px solid var(--accent);
+    position: relative;
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+  }
+
+  .contact-info-header {
+    margin-bottom: 32px;
+  }
+
+  .contact-info-header h2 {
+    color: var(--accent-strong);
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+  }
+
+  .contact-details-grid {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .contact-detail-item {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .detail-icon {
+    font-size: 1.5rem;
+    min-width: 32px;
+    filter: grayscale(0.8);
+  }
+
+  .detail-content h3 {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+
+  .detail-content p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .detail-content a {
+    color: var(--accent-strong);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-phone {
+    display: inline-block;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .detail-content a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .contact-cta-section {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Carte */
+  .map-container {
+    position: relative;
+  }
+
+  .map-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .map-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+  }
+
+  .map-card h3 {
+    padding: 20px 24px;
+    margin: 0;
+    color: var(--accent-strong);
+    background: var(--bg-elev);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 450px;
+    position: relative;
+  }
+
+  .map-wrapper iframe {
+    border: 0;
+    display: block;
+  }
+
+  /* Section Pourquoi nous contacter */
+  .why-contact-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+  }
+
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .why-contact-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .why-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .why-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(15, 118, 110, 0.12);
+  }
+
+  .why-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .why-card p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Responsive - Tablette */
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-details-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .why-contact-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+  }
+
+  /* Responsive - Desktop */
+  @media (min-width: 1024px) {
+    .contact-grid {
+      gap: 56px;
+    }
+
+    .contact-info-card {
+      padding: 48px 40px;
+    }
+
+    .why-contact-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.05) 100%);
+  }
+
+  :root[data-theme="dark"] .detail-icon {
+    filter: grayscale(0.5) brightness(1.2);
+  }
+</style>

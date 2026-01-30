@@ -1,0 +1,271 @@
+---
+import { legalLinks, navLinks, site } from '../data/site';
+import CTAButtons from './CTAButtons.astro';
+---
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <span class="footer-brand-name">{site.name}</span>
+          <span class="footer-brand-tagline">Excellence en carrosserie</span>
+        </div>
+        <p class="footer-description">
+          Atelier familial à Carcans. Expertise technique, finitions premium et transparence totale
+          pour sublimer votre véhicule.
+        </p>
+        <div class="footer-cta">
+          <CTAButtons />
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Navigation</h3>
+        <div class="footer-links">
+          {navLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <div class="footer-links">
+          <a href={site.telHref}>{site.phone}</a>
+          <a href={site.mobileHref}>{site.mobile}</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div class="footer-address">
+          <p>68 route de Bordeaux<br/>33121 Carcans</p>
+          <a href={site.mapsUrl} target="_blank" rel="noopener" class="footer-map-link">
+            📍 Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+      <div class="footer-section footer-legal-section">
+        <h3>Informations</h3>
+        <div class="footer-links">
+          {legalLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <small>© {new Date().getFullYear()} {site.shortName}. Tous droits réservés.</small>
+      <small class="footer-credits">Fait avec passion à Carcans</small>
+    </div>
+  </div>
+</footer>
+
+<style>
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  .site-footer {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 100%);
+    border-top: 3px solid;
+    border-image: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark)) 1;
+    margin-top: 80px;
+  }
+
+  .footer-top {
+    padding: 60px 0 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-about {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-strong) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .footer-description {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .footer-cta {
+    margin-top: 8px;
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-section h3 {
+    color: var(--accent-strong);
+    font-size: 1.1rem;
+    margin: 0;
+    font-family: var(--font-serif);
+    position: relative;
+    padding-bottom: 8px;
+  }
+
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 0;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .footer-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-strong);
+    padding-left: 8px;
+  }
+
+  .footer-links a:hover::before {
+    width: calc(100% - 8px);
+  }
+
+  .footer-address {
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-address p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-strong);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .footer-map-link:hover {
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    background: var(--bg-elev);
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom small {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .footer-credits {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-top {
+      padding: 80px 0 50px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      gap: 56px;
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .site-footer {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 100%);
+  }
+
+  :root[data-theme="dark"] .footer-brand-name {
+    background: linear-gradient(135deg, var(--text) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :root[data-theme="dark"] .footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+  }
+</style>

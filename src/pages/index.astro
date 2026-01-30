@@ -1,0 +1,947 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButtons from '../components/CTAButtons.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { site } from '../data/site';
+
+const title = 'Carrosserie familiale à Carcans';
+const description =
+  'Réparation, peinture et finition premium. Un atelier familial à Carcans avec un accompagnement transparent et des délais maîtrisés.';
+
+const faqItems = [
+  {
+    question: 'Travaillez-vous avec les assurances ?',
+    answer:
+      'Oui. Nous vous accompagnons dans les démarches, expliquons les étapes et restons transparents sur les délais et la prise en charge.',
+  },
+  {
+    question: 'Proposez-vous un devis clair avant intervention ?',
+    answer:
+      'Toujours. Chaque intervention commence par un diagnostic et un devis détaillé, sans surprise.',
+  },
+  {
+    question: 'Intervenez-vous sur des véhicules anciens ?',
+    answer:
+      'Oui. Victor et Louis sont passionnés de voitures anciennes et appliquent le même niveau d’exigence que pour leurs propres véhicules.',
+  },
+  {
+    question: 'Pouvez-vous réparer les bosses et rayures ?',
+    answer:
+      'Oui. Nous traitons les impacts, bosses, rayures et remplaçons les éléments si nécessaire avec des ajustements précis.',
+  },
+  {
+    question: 'Faites-vous la peinture complète ou les retouches ?',
+    answer:
+      'Oui. Nous réalisons des peintures complètes, des retouches et des raccords invisibles selon l’état du véhicule.',
+  },
+  {
+    question: 'Proposez-vous un véhicule de courtoisie ?',
+    answer:
+      'Selon disponibilité. Nous vous informons lors du devis pour organiser la mobilité pendant l’intervention.',
+  },
+  {
+    question: 'Le vitrage peut-il être remplacé rapidement ?',
+    answer:
+      'Nous priorisons la sécurité. Le délai dépend des pièces, mais nous planifions rapidement dès validation.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const sameAs = Object.values(site.socials).filter(Boolean);
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoBodyShop',
+  name: site.name,
+  image: new URL('/og.svg', site.url).toString(),
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.streetAddress,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.addressLocality,
+    addressCountry: site.address.addressCountry,
+  },
+  areaServed: site.areaServed,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.latitude,
+    longitude: site.geo.longitude,
+  },
+  openingHoursSpecification: site.openingHours.specification.map((entry) => ({
+    '@type': 'OpeningHoursSpecification',
+    ...entry,
+  })),
+  sameAs: sameAs.length ? sameAs : undefined,
+};
+
+---
+
+<BaseLayout title={title} description={description} jsonLd={[localBusiness, faqJsonLd]}>
+  <section class="hero home-hero">
+    <div class="container hero-grid">
+      <div class="reveal hero-content">
+        <span class="tag premium-tag">Atelier familial à Carcans</span>
+        <h1>
+          Carrosserie d'excellence,<br />
+          passion du détail.
+        </h1>
+        <p class="hero-lead">
+          Réparation, peinture et finition haut de gamme pour votre véhicule.
+          Un savoir-faire artisanal allié à une transparence totale.
+        </p>
+        <CTAButtons />
+      </div>
+      <div class="hero-logo-container reveal delay-1">
+        <div class="hero-logo-wrapper">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/logo-550.webp 550w, /images/logo-800.webp 800w"
+              sizes="(min-width: 1024px) 550px, (min-width: 768px) 500px, 450px"
+            />
+            <source
+              type="image/png"
+              srcset="/images/logo-550.png 550w, /images/logo-800.png 800w"
+              sizes="(min-width: 1024px) 550px, (min-width: 768px) 500px, 450px"
+            />
+            <img
+              src="/images/logo-550.png"
+              alt="Logo Carrosserie Carcanaise"
+              width="674"
+              height="477"
+              class="hero-logo"
+              loading="eager"
+            />
+          </picture>
+          <div class="logo-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Highlights -->
+  <section class="section highlights-section">
+    <div class="container">
+      <div class="highlights-layout">
+        <div class="highlights-media">
+          <ResponsiveImage
+            srcBase="/images/atelier/voiture-equilibrage-wide"
+            alt="Véhicule en atelier pendant une intervention de carrosserie"
+            sizes="(min-width: 1024px) 50vw, (min-width: 768px) 100vw, 100vw"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="highlights-grid">
+          <article class="card highlight-card">
+            <div class="highlight-accent-line"></div>
+            <h3>Diagnostic précis</h3>
+            <p>Devis détaillé sans surprise pour une transparence totale.</p>
+          </article>
+          <article class="card highlight-card">
+            <div class="highlight-accent-line"></div>
+            <h3>Finitions premium</h3>
+            <p>Qualité durable et contrôlée, résultat impeccable garanti.</p>
+          </article>
+          <article class="card highlight-card">
+            <div class="highlight-accent-line"></div>
+            <h3>Accompagnement assurance</h3>
+            <p>Démarches simplifiées, nous gérons tout pour vous.</p>
+          </article>
+          <article class="card highlight-card">
+            <div class="highlight-accent-line"></div>
+            <h3>Passion familiale</h3>
+            <p>Victor et Louis perpétuent l'héritage du garage Vigier.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Nos engagements</p>
+        <h2 class="section-title">L'excellence en quatre valeurs</h2>
+      </div>
+      <div class="values-grid-home">
+        <article class="card value-card-home reveal">
+          <h3>Transparence</h3>
+          <p>Devis détaillé, suivi régulier et explications claires à chaque étape.</p>
+        </article>
+        <article class="card value-card-home reveal delay-1">
+          <h3>Exigence</h3>
+          <p>Finitions premium, contrôle qualité strict et respect des standards les plus élevés.</p>
+        </article>
+        <article class="card value-card-home reveal delay-2">
+          <h3>Accompagnement</h3>
+          <p>Gestion assurance, véhicule de courtoisie et délais maîtrisés.</p>
+        </article>
+        <article class="card value-card-home reveal delay-3">
+          <h3>Respect</h3>
+          <p>Protection maximale des surfaces et restitution impeccable de votre véhicule.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Nos prestations</p>
+        <h2 class="section-title">Expertise complète en carrosserie</h2>
+      </div>
+      <div class="service-grid-home">
+        <article class="card service-card-home">
+          <div class="service-number">01</div>
+          <h3>Carrosserie</h3>
+          <p>Réparation, redressement et remplacement d'éléments avec précision.</p>
+        </article>
+        <article class="card service-card-home">
+          <div class="service-number">02</div>
+          <h3>Peinture</h3>
+          <p>Finitions premium, retouches invisibles et peintures complètes.</p>
+        </article>
+        <article class="card service-card-home">
+          <div class="service-number">03</div>
+          <h3>Vitrage</h3>
+          <p>Remplacement sécurisé avec garantie étanchéité.</p>
+        </article>
+        <article class="card service-card-home">
+          <div class="service-number">04</div>
+          <h3>Restauration</h3>
+          <p>Véhicules anciens traités avec authenticité et passion.</p>
+        </article>
+      </div>
+      <div class="section--tight center-align">
+        <a class="btn btn--ghost" href="/prestations">Voir toutes les prestations</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Notre méthode</p>
+        <h2 class="section-title">Un processus maîtrisé en 3 étapes</h2>
+      </div>
+      <div class="process-grid">
+        <article class="card process-card">
+          <div class="process-icon">01</div>
+          <h3>Diagnostic</h3>
+          <p>Analyse approfondie et devis transparent sans surprise.</p>
+        </article>
+        <div class="process-arrow">→</div>
+        <article class="card process-card">
+          <div class="process-icon">02</div>
+          <h3>Intervention</h3>
+          <p>Réparation et finitions avec contrôle qualité continu.</p>
+        </article>
+        <div class="process-arrow">→</div>
+        <article class="card process-card">
+          <div class="process-icon">03</div>
+          <h3>Restitution</h3>
+          <p>Véhicule impeccable avec explications détaillées.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section story-section">
+    <div class="container">
+      <div class="story-content surface premium-card">
+        <div class="story-text reveal">
+          <p class="section-kicker">L'atelier familial</p>
+          <h2 class="section-title">Une passion transmise depuis l'enfance</h2>
+          <p class="story-lead">
+            Victor et Louis ont grandi dans le garage Vigier, entourés de véhicules anciens et du goût du travail bien fait.
+            Cette passion familiale forge aujourd'hui leur exigence quotidienne.
+          </p>
+          <a class="btn btn--ghost" href="/a-propos">Notre histoire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-kicker">Questions fréquentes</p>
+        <h2 class="section-title">Les réponses à vos questions</h2>
+      </div>
+      <div class="faq-grid-home">
+        {faqItems.slice(0, 6).map((item) => (
+          <article class="card faq-card">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-card surface premium-card">
+        <div class="contact-content">
+          <div class="contact-text">
+            <p class="section-kicker">Contactez-nous</p>
+            <h2 class="section-title">Prêt à confier votre véhicule ?</h2>
+            <p class="contact-lead">
+              Demandez votre devis gratuit ou échangeons sur votre projet.
+            </p>
+          </div>
+          <div class="contact-info card">
+            <h3>Carrosserie Carcanaise</h3>
+            <div class="contact-details">
+              <p>68 route de Bordeaux<br/>33121 Carcans</p>
+              <p>
+                <span class="contact-phone">{site.phone}</span><br />
+                <span class="contact-phone">{site.mobile}</span>
+              </p>
+              <p>{site.email}</p>
+            </div>
+            <CTAButtons />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Variables couleur or pour le branding */
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  /* Hero section améliorée */
+  .home-hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent-soft) 30%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 70%;
+    height: 200%;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  }
+
+  .hero h1 {
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-strong) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 20px 0 28px;
+  }
+
+  /* Hero Logo */
+  .hero-logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .hero-logo-wrapper {
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-logo {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.2));
+    transition: transform 0.4s ease, filter 0.4s ease;
+    animation: logoFloat 6s ease-in-out infinite;
+  }
+
+  .hero-logo:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 12px 32px rgba(212, 175, 55, 0.35));
+  }
+
+  .logo-glow {
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity: 0.15;
+    z-index: 1;
+    animation: glowPulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.25;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Section Highlights */
+  .highlights-section {
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .highlights-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .highlights-media {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .highlights-media picture {
+    display: block;
+    width: 100%;
+  }
+
+  .highlights-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 3px solid var(--border);
+    box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15), 0 4px 12px rgba(212, 175, 55, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .highlights-media:hover img {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 16px 48px rgba(15, 118, 110, 0.2), 0 8px 24px rgba(212, 175, 55, 0.2);
+  }
+
+  .highlights-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    padding: 24px 20px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    border: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .highlight-accent-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .highlight-card:hover .highlight-accent-line {
+    transform: scaleX(1);
+  }
+
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at bottom right, var(--gold) 0%, transparent 70%);
+    opacity: 0.08;
+    transition: opacity 0.3s ease;
+  }
+
+  .highlight-card:hover::after {
+    opacity: 0.15;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.18);
+  }
+
+  .highlight-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.15rem;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 600;
+  }
+
+  .highlight-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Section headers centrés */
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .center-align {
+    text-align: center;
+  }
+
+  /* Grilles de valeurs avec style élégant */
+  .values-grid-home {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .value-card-home {
+    text-align: center;
+    padding: 32px 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-card-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .value-card-home:hover::before {
+    transform: scaleX(1);
+  }
+
+  .value-card-home:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(15, 118, 110, 0.15);
+    border-color: var(--accent);
+  }
+
+  .value-card-home h3 {
+    color: var(--accent-strong);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .value-card-home p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Section services avec numéros */
+  .services-section {
+    background: linear-gradient(180deg, transparent 0%, var(--accent-soft) 50%, transparent 100%);
+  }
+
+  .service-grid-home {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .service-card-home {
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .service-number {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.15;
+    font-family: var(--font-serif);
+    transition: all 0.3s ease;
+  }
+
+  .service-card-home:hover .service-number {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+
+  .service-card-home:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(15, 118, 110, 0.12);
+  }
+
+  .service-card-home h3 {
+    color: var(--accent-strong);
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  /* Section processus avec flèches */
+  .process-section {
+    background: var(--bg-elev);
+  }
+
+  .process-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .process-card {
+    text-align: center;
+    padding: 32px 24px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border);
+  }
+
+  .process-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    font-family: var(--font-serif);
+  }
+
+  .process-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+  }
+
+  .process-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .process-arrow {
+    display: none;
+    font-size: 2rem;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* Section histoire */
+  .story-section {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 50%);
+  }
+
+  .story-content {
+    padding: 48px 32px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .story-text {
+    text-align: center;
+  }
+
+  .story-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 20px 0 28px;
+  }
+
+  /* Section FAQ */
+  .faq-grid-home {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .faq-card {
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .faq-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.1);
+  }
+
+  .faq-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  .faq-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  /* Section contact */
+  .contact-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 100%);
+  }
+
+  .contact-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .contact-content {
+    display: grid;
+    gap: 32px;
+    padding: 48px 32px;
+  }
+
+  .contact-text {
+    text-align: center;
+  }
+
+  .contact-lead {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 16px 0 0;
+  }
+
+  .contact-info {
+    background: var(--card);
+    border: 2px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+  }
+
+  .contact-info h3 {
+    color: var(--accent-strong);
+    margin-bottom: 16px;
+  }
+
+  .contact-details {
+    margin-bottom: 24px;
+  }
+
+  .contact-details p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .contact-phone {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* Responsive - Tablette */
+  @media (min-width: 768px) {
+    .hero-logo {
+      max-width: 500px;
+    }
+
+    .highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .values-grid-home {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .service-grid-home {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 16px;
+    }
+
+    .process-arrow {
+      display: block;
+    }
+
+    .faq-grid-home {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .contact-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .contact-text {
+      text-align: left;
+    }
+  }
+
+  /* Responsive - Desktop */
+  @media (min-width: 1024px) {
+    .hero-logo {
+      max-width: 550px;
+    }
+
+    .highlights-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .highlights-media {
+      align-self: center;
+    }
+
+    .highlights-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .values-grid-home {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .service-grid-home {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .faq-grid-home {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-content {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .highlights-layout {
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .highlights-layout {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 56px;
+    }
+  }
+
+  /* Mode sombre - ajustements or */
+  :root[data-theme="dark"] .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+  }
+
+  :root[data-theme="dark"] .hero-logo {
+    filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.3));
+  }
+
+  :root[data-theme="dark"] .hero-logo:hover {
+    filter: drop-shadow(0 12px 32px rgba(212, 175, 55, 0.45));
+  }
+
+  :root[data-theme="dark"] .logo-glow {
+    opacity: 0.2;
+  }
+
+  :root[data-theme="dark"] .highlight-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.03) 100%);
+  }
+
+  :root[data-theme="dark"] .process-icon {
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
+  }
+
+  :root[data-theme="dark"] .contact-info {
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+  }
+</style>

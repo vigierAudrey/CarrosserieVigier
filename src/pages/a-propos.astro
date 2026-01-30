@@ -1,0 +1,550 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+
+const title = 'À propos';
+const description =
+  'Carrosserie familiale à Carcans : Victor et Louis perpétuent un savoir-faire exigeant, avec respect du véhicule et transparence.';
+
+const atelierPhotos = [
+  {
+    srcBase: '/images/atelier/victor-louis',
+    width: 1050,
+    height: 1400,
+    alt: 'Victor et Louis dans le garage Vigier',
+    caption: 'Une équipe familiale, passionnée et exigeante.',
+  },
+  {
+    srcBase: '/images/atelier/enfance-garage',
+    width: 1351,
+    height: 1362,
+    alt: "Souvenir d'enfance autour d'un véhicule ancien dans le garage Vigier",
+    caption: "Transmission et respect de l'authenticité.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="section about-hero">
+    <div class="container">
+      <div class="hero-content-center">
+        <span class="tag premium-tag">Notre histoire</span>
+        <h1 class="section-title">Carrosserie familiale, passion transmise</h1>
+        <p class="hero-lead">
+          Une histoire de famille ancrée à Carcans. Victor et Louis perpétuent
+          l'héritage du garage Vigier avec exigence et passion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Histoire & Photo -->
+  <section class="section story-section">
+    <div class="container about-split">
+      <div class="about-content">
+        <h2 class="content-title">De l'enfance à l'excellence</h2>
+        <div class="intro-text">
+          <p>
+            Chez nous, la carrosserie est plus qu'un métier : c'est une histoire de famille. Depuis l'enfance, Victor et
+            Louis ont grandi dans le garage Vigier, baignés dans l'univers des véhicules anciens et la passion de leur restauration.
+          </p>
+          <p>
+            Cette passion transmise de génération en génération forge aujourd'hui leur approche : collectionneurs et restaurateurs de voitures anciennes,
+            ils travaillent chaque véhicule avec la même exigence et le même respect que pour les leurs.
+          </p>
+        </div>
+      </div>
+      <div class="about-photos">
+        <figure class="media-card photo-item" data-index="0">
+          <ResponsiveImage
+            srcBase={atelierPhotos[0].srcBase}
+            width={atelierPhotos[0].width}
+            height={atelierPhotos[0].height}
+            alt={atelierPhotos[0].alt}
+          />
+          <figcaption>{atelierPhotos[0].caption}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section passion-section">
+    <div class="container passion-split">
+      <figure class="media-card photo-passion">
+        <ResponsiveImage
+          srcBase={atelierPhotos[1].srcBase}
+          width={atelierPhotos[1].width}
+          height={atelierPhotos[1].height}
+          alt={atelierPhotos[1].alt}
+        />
+        <figcaption>{atelierPhotos[1].caption}</figcaption>
+      </figure>
+      <div class="surface premium-card passion-card">
+        <h2>Une passion devenue métier</h2>
+        <p>
+          Du souvenir d'enfance à l'expertise d'aujourd'hui, chaque réparation est réalisée avec cette même exigence :
+          respect des lignes, soin des finitions et transparence totale avec le client.
+        </p>
+        <ul class="list expertise-list">
+          <li>Culture artisanale et sens du détail hérités de l'enfance</li>
+          <li>Atelier équipé pour interventions précises</li>
+          <li>Échanges clairs et délais maîtrisés</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values-section">
+    <div class="container">
+      <div class="values-header">
+        <p class="section-kicker">Nos valeurs</p>
+        <h2 class="section-title">Respect, exigence, transmission</h2>
+      </div>
+      <div class="values-grid">
+        <article class="card value-card">
+          <h3>Respect du véhicule</h3>
+          <p>Protection, finitions et restitution propres, comme si c'était le nôtre.</p>
+        </article>
+        <article class="card value-card">
+          <h3>Exigence</h3>
+          <p>Un résultat durable, fidèle à l'origine, dans le moindre détail.</p>
+        </article>
+        <article class="card value-card">
+          <h3>Transparence</h3>
+          <p>Devis clair, explications simples et suivi régulier.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Variables couleur or */
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d98f;
+    --gold-dark: #b8941f;
+  }
+
+  /* Hero Section */
+  .about-hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+    text-align: center;
+    padding-bottom: 48px;
+  }
+
+  .hero-content-center {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    display: inline-flex;
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 20px;
+  }
+
+  /* Section Histoire */
+  .story-section {
+    background: var(--bg);
+  }
+
+  .about-split {
+    display: grid;
+    gap: 32px;
+    position: relative;
+    align-items: center;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    padding: 32px 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .about-content::after {
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 80px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.2;
+    border-radius: 4px;
+    display: none;
+  }
+
+  .content-title {
+    color: var(--accent-strong);
+    font-size: 1.8rem;
+    font-family: var(--font-serif);
+    margin: 0 0 16px;
+    position: relative;
+    padding-bottom: 12px;
+  }
+
+  .content-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  .intro-text {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .intro-text p {
+    margin-bottom: 20px;
+  }
+
+  /* Photos */
+  .about-photos {
+    display: flex;
+    justify-content: center;
+  }
+
+  .photo-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    max-width: 100%;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .photo-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--gold) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+  .photo-item:hover::before {
+    opacity: 0.15;
+  }
+
+  .photo-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+    border-color: var(--gold);
+  }
+
+  .photo-item img {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .photo-item figcaption {
+    background: var(--bg-elev);
+    padding: 12px 16px 16px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* Section passion */
+  .passion-section {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 50%, var(--bg) 100%);
+  }
+
+  .passion-split {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .photo-passion {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    border-radius: var(--radius);
+    position: relative;
+  }
+
+  .photo-passion::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--gold) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+  .photo-passion:hover::before {
+    opacity: 0.15;
+  }
+
+  .photo-passion:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+    border-color: var(--gold);
+  }
+
+  .photo-passion img {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .photo-passion figcaption {
+    background: var(--bg-elev);
+    padding: 12px 16px 16px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* Premium Card */
+  .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent-soft) 100%);
+    border: 2px solid var(--accent);
+    position: relative;
+    padding: 32px 28px;
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+  }
+
+  .passion-card::after {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 80px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.2;
+    border-radius: 4px;
+    display: none;
+  }
+
+  .passion-card h2 {
+    color: var(--accent-strong);
+    font-size: 1.6rem;
+    margin: 0 0 16px;
+    font-family: var(--font-serif);
+  }
+
+  .passion-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .expertise-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+
+  .expertise-list li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .expertise-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 16px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  }
+
+  /* Section valeurs */
+  .values-section {
+    background: var(--bg-elev);
+  }
+
+  .values-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .values-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .value-card {
+    text-align: center;
+    padding: 32px 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .value-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(212, 175, 55, 0.15);
+    border-color: var(--accent);
+  }
+
+  .value-card h3 {
+    color: var(--accent-strong);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-family: var(--font-serif);
+    position: relative;
+    padding-bottom: 12px;
+  }
+
+  .value-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .value-card p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Responsive - Tablette */
+  @media (min-width: 768px) {
+    .about-split {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-content::after {
+      display: block;
+    }
+
+    .passion-split {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .passion-card::after {
+      display: block;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+  }
+
+  /* Responsive - Desktop */
+  @media (min-width: 1024px) {
+    .about-split {
+      grid-template-columns: 1.25fr 1fr;
+      gap: 48px;
+    }
+
+    .about-content::after {
+      right: -24px;
+      width: 48px;
+      height: 120px;
+      opacity: 0.25;
+    }
+
+    .intro-text {
+      font-size: 1.12rem;
+    }
+
+    .passion-split {
+      grid-template-columns: 1fr 1.15fr;
+      gap: 48px;
+    }
+
+    .passion-card {
+      padding: 40px 36px;
+    }
+
+    .passion-card::after {
+      left: -24px;
+      width: 48px;
+      height: 120px;
+      opacity: 0.25;
+    }
+  }
+
+  /* Mode sombre */
+  :root[data-theme="dark"] .premium-tag {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+  }
+
+  :root[data-theme="dark"] .premium-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.05) 100%);
+  }
+
+  :root[data-theme="dark"] .photo-item::before,
+  :root[data-theme="dark"] .photo-passion::before {
+    opacity: 0;
+  }
+
+  :root[data-theme="dark"] .photo-item:hover::before,
+  :root[data-theme="dark"] .photo-passion:hover::before {
+    opacity: 0.2;
+  }
+
+  :root[data-theme="dark"] .value-card {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(212, 175, 55, 0.03) 100%);
+  }
+</style>
