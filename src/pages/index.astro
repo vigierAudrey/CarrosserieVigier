@@ -5,6 +5,8 @@ import ResponsiveImage from '../components/ResponsiveImage.astro';
 import { site } from '../data/site';
 
 const title = 'Carrosserie familiale à Carcans';
+const withBase = (path) => `${import.meta.env.BASE_URL}${String(path).replace(/^\//, '')}`;
+
 const description =
   'Réparation, peinture et finition premium. Un atelier familial à Carcans avec un accompagnement transparent et des délais maîtrisés.';
 
@@ -110,16 +112,16 @@ const localBusiness = {
           <picture>
             <source
               type="image/webp"
-              srcset="/images/logo-550.webp 550w, /images/logo-800.webp 800w"
+              srcset={`${withBase('/images/logo-550.webp')} 550w, ${withBase('/images/logo-800.webp')} 800w`}
               sizes="(min-width: 1024px) 550px, (min-width: 768px) 500px, 450px"
             />
             <source
               type="image/png"
-              srcset="/images/logo-550.png 550w, /images/logo-800.png 800w"
+              srcset={`${withBase('/images/logo-550.png')} 550w, ${withBase('/images/logo-800.png')} 800w`}
               sizes="(min-width: 1024px) 550px, (min-width: 768px) 500px, 450px"
             />
             <img
-              src="/images/logo-550.png"
+              src={withBase('/images/logo-550.png')}
               alt="Logo Carrosserie Carcanaise"
               width="674"
               height="477"
@@ -139,7 +141,7 @@ const localBusiness = {
       <div class="highlights-layout">
         <div class="highlights-media">
           <ResponsiveImage
-            srcBase="/images/atelier/voiture-equilibrage-wide"
+            srcBase={withBase('/images/atelier/voiture-equilibrage-wide')}
             alt="Véhicule en atelier pendant une intervention de carrosserie"
             sizes="(min-width: 1024px) 50vw, (min-width: 768px) 100vw, 100vw"
             loading="lazy"
@@ -228,7 +230,7 @@ const localBusiness = {
         </article>
       </div>
       <div class="section--tight center-align">
-        <a class="btn btn--ghost" href="/prestations">Voir toutes les prestations</a>
+        <a class="btn btn--ghost" href={withBase('/prestations')}>Voir toutes les prestations</a>
       </div>
     </div>
   </section>
@@ -271,7 +273,7 @@ const localBusiness = {
             Victor et Louis ont grandi dans le garage Vigier, entourés de véhicules anciens et du goût du travail bien fait.
             Cette passion familiale forge aujourd'hui leur exigence quotidienne.
           </p>
-          <a class="btn btn--ghost" href="/a-propos">Notre histoire</a>
+          <a class="btn btn--ghost" href={withBase('/a-propos')}>Notre histoire</a>
         </div>
       </div>
     </div>

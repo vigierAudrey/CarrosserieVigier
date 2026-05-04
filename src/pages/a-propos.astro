@@ -3,19 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 
 const title = 'À propos';
+const withBase = (path) => `${import.meta.env.BASE_URL}${String(path).replace(/^\//, '')}`;
+
 const description =
   'Carrosserie familiale à Carcans : Victor et Louis perpétuent un savoir-faire exigeant, avec respect du véhicule et transparence.';
 
 const atelierPhotos = [
   {
-    srcBase: '/images/atelier/victor-louis',
+    srcBase: withBase('/images/atelier/victor-louis'),
     width: 1050,
     height: 1400,
     alt: 'Victor et Louis dans le garage Vigier',
     caption: 'Une équipe familiale, passionnée et exigeante.',
   },
   {
-    srcBase: '/images/atelier/enfance-garage',
+    srcBase: withBase('/images/atelier/enfance-garage'),
     width: 1351,
     height: 1362,
     alt: "Souvenir d'enfance autour d'un véhicule ancien dans le garage Vigier",
