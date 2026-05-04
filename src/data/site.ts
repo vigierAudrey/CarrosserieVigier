@@ -20,11 +20,16 @@ export const site = {
     'https://www.google.com/maps/dir/?api=1&destination=68+route+de+Bordeaux%2C+33121+Carcans%2C+France',
   areaServed: ['Carcans', 'Médoc Atlantique', 'Lacanau', 'Hourtin', 'Maubuisson'],
   openingHours: {
-    label: 'Horaires à confirmer',
+    label: 'Lundi au vendredi : 08:00-12:00 et 14:00-18:00. Samedi et dimanche : fermé.',
     specification: [
       {
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
+        opens: '08:00',
+        closes: '12:00',
+      },
+      {
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '14:00',
         closes: '18:00',
       },
     ],
