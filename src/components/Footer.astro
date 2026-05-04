@@ -1,6 +1,8 @@
 ---
 import { legalLinks, navLinks, site } from '../data/site';
 import CTAButtons from './CTAButtons.astro';
+const withBase = (path) =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
 ---
 <footer class="site-footer">
   <div class="footer-top">
@@ -22,7 +24,7 @@ import CTAButtons from './CTAButtons.astro';
         <h3>Navigation</h3>
         <div class="footer-links">
           {navLinks.map((link) => (
-            <a href={link.href}>{link.label}</a>
+            <a href={withBase(link.href)}>{link.label}</a>
           ))}
         </div>
       </div>
@@ -44,7 +46,7 @@ import CTAButtons from './CTAButtons.astro';
         <h3>Informations</h3>
         <div class="footer-links">
           {legalLinks.map((link) => (
-            <a href={link.href}>{link.label}</a>
+            <a href={withBase(link.href)}>{link.label}</a>
           ))}
         </div>
       </div>
