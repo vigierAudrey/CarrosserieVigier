@@ -3,5 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.carrosserie-carcanaise.fr',
+  site: 'https://vigieraudrey.github.io',
+  base: '/CarrosserieVigier',
 });
