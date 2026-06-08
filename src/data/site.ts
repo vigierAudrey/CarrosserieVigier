@@ -21,6 +21,11 @@ export const site = {
   areaServed: ['Carcans', 'Médoc Atlantique', 'Lacanau', 'Hourtin', 'Maubuisson'],
   openingHours: {
     label: 'Lundi au vendredi : 08:00-12:00 et 14:00-18:00. Samedi et dimanche : fermé.',
+    display: [
+      { days: 'Lundi au vendredi', hours: '08:00-12:00 • 14:00-18:00' },
+      { days: 'Samedi', hours: 'Fermé' },
+      { days: 'Dimanche', hours: 'Fermé' },
+    ],
     specification: [
       {
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],

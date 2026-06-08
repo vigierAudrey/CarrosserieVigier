@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Réalisations avant / après';
-const withBase = (path) =>
+const withBase = (path: string) =>
   `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
 
 const description =
@@ -10,28 +10,22 @@ const description =
 
 const projects = [
   {
-    title: 'Impact latéral et peinture complète',
+    title: 'Choc frontal — remplacement aile et optique',
     category: 'Carrosserie & Peinture',
-    before: withBase('/images/realisations/avant-1.svg'),
-    after: withBase('/images/realisations/apres-1.svg'),
+    before: withBase('/images/realisations/avant-1.jpg'),
+    after: withBase('/images/realisations/apres-1.jpg'),
   },
   {
-    title: 'Redressage aile + raccord peinture',
+    title: 'Réparation aile avant et remise en peinture',
     category: 'Débosselage & Finition',
-    before: withBase('/images/realisations/avant-2.svg'),
-    after: withBase('/images/realisations/apres-2.svg'),
+    before: withBase('/images/realisations/avant-2.jpg'),
+    after: withBase('/images/realisations/apres-2.jpg'),
   },
   {
-    title: 'Rénovation optiques et finition',
+    title: 'Rénovation jantes et finition véhicule',
     category: 'Rénovation & Esthétique',
-    before: withBase('/images/realisations/avant-3.svg'),
-    after: withBase('/images/realisations/apres-3.svg'),
-  },
-  {
-    title: 'Restauration véhicule ancien',
-    category: 'Restauration Vintage',
-    before: withBase('/images/realisations/avant-4.svg'),
-    after: withBase('/images/realisations/apres-4.svg'),
+    before: withBase('/images/realisations/avant-3.jpg'),
+    after: withBase('/images/realisations/apres-3.jpg'),
   },
 ];
 ---
