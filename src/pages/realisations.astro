@@ -26,6 +26,7 @@ const projects = [
     category: 'Rénovation & Esthétique',
     before: withBase('/images/realisations/avant-3.jpg'),
     after: withBase('/images/realisations/apres-3.jpg'),
+    hideLabels: true,
   },
 ];
 ---
@@ -57,7 +58,7 @@ const projects = [
             </div>
             <div class="project-images">
               <div class="project-image-wrapper before-image">
-                <span class="image-label">Avant</span>
+                {!project.hideLabels && <span class="image-label">Avant</span>}
                 <img
                   src={project.before}
                   alt={`Avant - ${project.title}`}
@@ -68,7 +69,7 @@ const projects = [
               </div>
               <div class="project-divider">→</div>
               <div class="project-image-wrapper after-image">
-                <span class="image-label">Après</span>
+                {!project.hideLabels && <span class="image-label">Après</span>}
                 <img
                   src={project.after}
                   alt={`Après - ${project.title}`}
