@@ -31,7 +31,7 @@ const atelierPhotos = [
   <!-- Hero Section -->
   <section class="section about-hero">
     <div class="container">
-      <div class="hero-content-center">
+      <div class="hero-content-center reveal">
         <span class="tag premium-tag">Notre histoire</span>
         <h1 class="section-title">Carrosserie familiale, passion transmise</h1>
         <p class="hero-lead">
@@ -45,7 +45,7 @@ const atelierPhotos = [
   <!-- Section Histoire & Photo -->
   <section class="section story-section">
     <div class="container about-split">
-      <div class="about-content">
+      <div class="about-content reveal-left">
         <h2 class="content-title">De l'enfance à l'excellence</h2>
         <div class="intro-text">
           <p>
@@ -58,7 +58,7 @@ const atelierPhotos = [
           </p>
         </div>
       </div>
-      <div class="about-photos">
+      <div class="about-photos reveal-right">
         <figure class="media-card photo-item" data-index="0">
           <ResponsiveImage
             srcBase={atelierPhotos[0].srcBase}
@@ -74,7 +74,7 @@ const atelierPhotos = [
 
   <section class="section passion-section">
     <div class="container passion-split">
-      <figure class="media-card photo-passion">
+      <figure class="media-card photo-passion reveal-left">
         <ResponsiveImage
           srcBase={atelierPhotos[1].srcBase}
           width={atelierPhotos[1].width}
@@ -83,7 +83,7 @@ const atelierPhotos = [
         />
         <figcaption>{atelierPhotos[1].caption}</figcaption>
       </figure>
-      <div class="surface premium-card passion-card">
+      <div class="surface premium-card passion-card reveal-right">
         <h2>Une passion devenue métier</h2>
         <p>
           Du souvenir d'enfance à l'expertise d'aujourd'hui, chaque réparation est réalisée avec cette même exigence :
@@ -100,20 +100,20 @@ const atelierPhotos = [
 
   <section class="section values-section">
     <div class="container">
-      <div class="values-header">
+      <div class="values-header reveal">
         <p class="section-kicker">Nos valeurs</p>
         <h2 class="section-title">Respect, exigence, transmission</h2>
       </div>
       <div class="values-grid">
-        <article class="card value-card">
+        <article class="card value-card reveal">
           <h3>Respect du véhicule</h3>
           <p>Protection, finitions et restitution propres, comme si c'était le nôtre.</p>
         </article>
-        <article class="card value-card">
+        <article class="card value-card reveal delay-1">
           <h3>Exigence</h3>
           <p>Un résultat durable, fidèle à l'origine, dans le moindre détail.</p>
         </article>
-        <article class="card value-card">
+        <article class="card value-card reveal delay-2">
           <h3>Transparence</h3>
           <p>Devis clair, explications simples et suivi régulier.</p>
         </article>

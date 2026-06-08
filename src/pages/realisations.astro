@@ -34,7 +34,7 @@ const projects = [
   <!-- Hero Section -->
   <section class="section realisations-hero">
     <div class="container">
-      <div class="hero-content-center">
+      <div class="hero-content-center reveal">
         <span class="tag premium-tag">Notre savoir-faire</span>
         <h1 class="section-title">Réalisations avant / après</h1>
         <p class="hero-lead">
@@ -50,7 +50,7 @@ const projects = [
     <div class="container">
       <div class="projects-grid">
         {projects.map((project, index) => (
-          <article class="project-card" data-index={index}>
+          <article class="project-card reveal" data-index={index}>
             <div class="project-header">
               <span class="project-category">{project.category}</span>
               <h2 class="project-title">{project.title}</h2>
@@ -87,7 +87,7 @@ const projects = [
   <!-- CTA Section -->
   <section class="section cta-realisations-section">
     <div class="container">
-      <div class="cta-card surface premium-card">
+      <div class="cta-card surface premium-card reveal">
         <div class="cta-content">
           <p class="section-kicker">Un projet similaire ?</p>
           <h2>Confiez-nous votre véhicule</h2>
@@ -312,7 +312,17 @@ const projects = [
   @media (min-width: 768px) {
     .project-images {
       grid-template-columns: 1fr auto 1fr;
-      align-items: center;
+      align-items: stretch;
+    }
+
+    .project-image-wrapper {
+      height: 380px;
+    }
+
+    .project-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .project-divider {
@@ -328,6 +338,10 @@ const projects = [
   @media (min-width: 1024px) {
     .project-header {
       padding: 32px 40px;
+    }
+
+    .project-image-wrapper {
+      height: 440px;
     }
 
     .cta-card {

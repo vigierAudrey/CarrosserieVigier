@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Prestations carrosserie';
-const withBase = (path) =>
+const withBase = (path: string) =>
   `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
 
 const description =
@@ -65,7 +65,7 @@ const services = [
   <!-- Hero Section -->
   <section class="section prestations-hero">
     <div class="container">
-      <div class="hero-content-center">
+      <div class="hero-content-center reveal">
         <span class="tag premium-tag">Savoir-faire artisanal</span>
         <h1 class="section-title">Excellence en carrosserie et peinture</h1>
         <p class="hero-lead">
@@ -80,14 +80,17 @@ const services = [
   <section class="section services-detailed-section">
     <div class="container">
       {services.map((service, index) => (
-        <article class="service-detailed" data-index={index}>
+        <article class="service-detailed reveal" data-index={index}>
           <div class="service-header">
             {service.id === 'peinture' ? (
-              <span
-                class="service-gun-number"
-                style={`--g:url('${withBase('/images/pistolet/pistolet-droit-transparent-v2.png')}')`}
-                aria-hidden="true"
-              ></span>
+              <div class="service-gun-wrapper">
+                <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
+                <span
+                  class="service-gun-number"
+                  style={`--g:url('${withBase('/images/pistolet/pistolet-droit-transparent-v2.png')}')`}
+                  aria-hidden="true"
+                ></span>
+              </div>
             ) : (
               <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
             )}
@@ -116,7 +119,7 @@ const services = [
   <!-- Accompagnement Section -->
   <section class="section accompagnement-section">
     <div class="container">
-      <div class="accompagnement-card surface premium-card">
+      <div class="accompagnement-card surface premium-card reveal">
         <div class="accompagnement-content">
           <div>
             <p class="section-kicker">Accompagnement complet</p>
@@ -226,6 +229,17 @@ const services = [
     font-family: var(--font-serif);
     opacity: 0.3;
     min-width: 80px;
+  }
+
+  .service-gun-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 80px;
+  }
+
+  .service-gun-wrapper .service-number {
+    min-width: unset;
   }
 
   .service-gun-number {
