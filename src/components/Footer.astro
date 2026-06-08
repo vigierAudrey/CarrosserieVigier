@@ -1,7 +1,7 @@
 ---
 import { legalLinks, navLinks, site } from '../data/site';
 import CTAButtons from './CTAButtons.astro';
-const withBase = (path) =>
+const withBase = (path: string) =>
   `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
 ---
 <footer class="site-footer">
@@ -10,7 +10,19 @@ const withBase = (path) =>
       <div class="footer-about">
         <div class="footer-brand">
           <span class="footer-brand-name">{site.name}</span>
-          <span class="footer-brand-tagline">Excellence en carrosserie</span>
+          <span class="footer-brand-tagline">
+            <span
+              class="footer-gun"
+              style={`--g:url('${withBase('/images/pistolet/pistolet-gauche-transparent-v2.png')}')`}
+              aria-hidden="true"
+            ></span>
+            Excellence en carrosserie
+            <span
+              class="footer-gun"
+              style={`--g:url('${withBase('/images/pistolet/pistolet-droit-transparent-v2.png')}')`}
+              aria-hidden="true"
+            ></span>
+          </span>
         </div>
         <p class="footer-description">
           Atelier familial à Carcans. Expertise technique, finitions premium et transparence totale
@@ -96,6 +108,18 @@ const withBase = (path) =>
     gap: 4px;
   }
 
+  .footer-gun {
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    flex-shrink: 0;
+    background-color: var(--gold);
+    -webkit-mask: var(--g) center / contain no-repeat;
+    mask: var(--g) center / contain no-repeat;
+    opacity: 0.85;
+  }
+
+
   .footer-brand-name {
     font-family: var(--font-serif);
     font-size: 1.5rem;
@@ -107,6 +131,10 @@ const withBase = (path) =>
   }
 
   .footer-brand-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
     font-size: 0.85rem;
     color: var(--gold);
     font-weight: 500;

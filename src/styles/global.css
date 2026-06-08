@@ -172,6 +172,7 @@ a:hover {
 .btn:hover {
   transform: translateY(-1px);
   background: var(--accent-strong);
+  color: #fff;
   box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
 }
 
@@ -182,6 +183,7 @@ a:hover {
 
 .btn--ghost:hover {
   background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .theme-toggle {

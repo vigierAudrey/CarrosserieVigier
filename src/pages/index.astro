@@ -95,7 +95,7 @@ const localBusiness = {
 
 <BaseLayout title={title} description={description} jsonLd={[localBusiness, faqJsonLd]}>
   <section class="hero home-hero">
-    <div class="container hero-grid">
+<div class="container hero-grid">
       <div class="reveal hero-content">
         <span class="tag premium-tag">Atelier familial à Carcans</span>
         <h1>
@@ -214,8 +214,13 @@ const localBusiness = {
           <h3>Carrosserie</h3>
           <p>Réparation, redressement et remplacement d'éléments avec précision.</p>
         </article>
-        <article class="card service-card-home">
+        <article class="card service-card-home service-card-peinture">
           <div class="service-number">02</div>
+          <span
+            class="card-gun-accent"
+            style={`--g:url('${withBase('/images/pistolet/pistolet-droit-transparent-v2.png')}')`}
+            aria-hidden="true"
+          ></span>
           <h3>Peinture</h3>
           <p>Finitions premium, retouches invisibles et peintures complètes.</p>
         </article>
@@ -332,6 +337,26 @@ const localBusiness = {
     --gold: #d4af37;
     --gold-light: #f0d98f;
     --gold-dark: #b8941f;
+  }
+
+/* --- Pistolet décoratif dans la carte Peinture (home) --- */
+  .service-card-peinture {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-gun-accent {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 64px;
+    height: 64px;
+    background-color: var(--gold);
+    -webkit-mask: var(--g) center / contain no-repeat;
+    mask: var(--g) center / contain no-repeat;
+    opacity: 0.18;
+    transform: rotate(10deg);
+    pointer-events: none;
   }
 
   /* Hero section améliorée */

@@ -82,7 +82,15 @@ const services = [
       {services.map((service, index) => (
         <article class="service-detailed" data-index={index}>
           <div class="service-header">
-            <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
+            {service.id === 'peinture' ? (
+              <span
+                class="service-gun-number"
+                style={`--g:url('${withBase('/images/pistolet/pistolet-droit-transparent-v2.png')}')`}
+                aria-hidden="true"
+              ></span>
+            ) : (
+              <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
+            )}
             <div class="service-header-text">
               <h2>{service.title}</h2>
               <p class="service-subtitle">{service.subtitle}</p>
@@ -220,7 +228,18 @@ const services = [
     min-width: 80px;
   }
 
-  .service-header-text h2 {
+  .service-gun-number {
+    display: block;
+    width: 64px;
+    height: 72px;
+    min-width: 80px;
+    background-color: var(--gold);
+    -webkit-mask: var(--g) center / contain no-repeat;
+    mask: var(--g) center / contain no-repeat;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
+  }
+
+.service-header-text h2 {
     color: var(--accent-strong);
     font-size: 1.8rem;
     margin: 0 0 8px;
